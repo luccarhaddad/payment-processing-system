@@ -1,0 +1,79 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.openapi.generator' version '7.4.0'
+}
+
+group = 'com.payments'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// Spring Kafka dependencies
+	implementation 'org.springframework.kafka:spring-kafka'
+	// Lombok for code generation
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	// OpenAPI Generator dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+	implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
+	// Test dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+openApiGenerate {
+	generatorName = "spring"
+	inputSpec = layout.projectDirectory.file("src/main/resources/gateway.yaml").asFile.path
+    outputDir = layout.buildDirectory.dir("generated-sources/openapi").get().asFile.path
+	apiPackage.set("com.payments.gateway.controllers")
+	modelPackage.set("com.payments.common.dtos")
+	apiPackage = "com.payments.gateway.api"
+	modelPackage = "com.payments.gateway.model"
+	configOptions = [
+			interfaceOnly: "true",
+			useSpringBoot3: "true",
+			useOptional: "true",
+			dateLibrary: "java8",
+			serializationLibrary: "jackson",
+			skipDefaultInterface: "true",
+			enumPropertyNaming: "UPPERCASE",
+	]
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir "${layout.buildDirectory.dir("generated-sources/openapi/src/main/java").get().asFile.path}"
+		}
+	}
+}
+
+compileJava.dependsOn('openApiGenerate')
