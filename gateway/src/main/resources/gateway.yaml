@@ -154,14 +154,14 @@ components:
           description: Unique identifier for the transaction
         status:
           $ref: '#/components/schemas/PaymentStatus'
-        createdAt:
+        processedAt:
           type: string
-          format: date-time
+          format: timestamp
           description: Timestamp of when the payment was created
       required:
         - paymentId
         - status
-        - createdAt
+        - processedAt
 
     CancelRequest:
       type: object
@@ -177,8 +177,13 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/PaymentStatus'
+        processedAt:
+          type: string
+          format: timestamp
+          description: Timestamp of when the payment was created
       required:
         - status
+        - processedAt
 
     RefundRequest:
       type: object
@@ -198,8 +203,13 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/PaymentStatus'
+        processedAt:
+          type: string
+          format: timestamp
+          description: Timestamp of when the payment was created
       required:
         - status
+        - processedAt
 
     ErrorResponse:
       type: object
