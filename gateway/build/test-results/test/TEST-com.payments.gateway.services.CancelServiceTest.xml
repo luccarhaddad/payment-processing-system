@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.payments.gateway.services.CancelServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-05-03T19:01:23.268Z" hostname="Luccas-MacBook-Air.local" time="0.122">
-  <properties/>
-  <testcase name="processDoesNotSendMessageWhenKafkaTemplateFails()" classname="com.payments.gateway.services.CancelServiceTest" time="0.12"/>
-  <testcase name="processReturnsPendingStatusWhenRequestIsValid()" classname="com.payments.gateway.services.CancelServiceTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
