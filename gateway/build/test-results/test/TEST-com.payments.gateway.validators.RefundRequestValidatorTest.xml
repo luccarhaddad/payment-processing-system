@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.payments.gateway.validators.RefundRequestValidatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-05-03T19:01:23.430Z" hostname="Luccas-MacBook-Air.local" time="0.001">
+  <properties/>
+  <testcase name="shouldThrowExceptionWhenRequestIsNull()" classname="com.payments.gateway.validators.RefundRequestValidatorTest" time="0.0"/>
+  <testcase name="shouldThrowExceptionWhenAmountIsLessThanOrEqualToZero()" classname="com.payments.gateway.validators.RefundRequestValidatorTest" time="0.0"/>
+  <testcase name="shouldThrowExceptionWhenPaymentIdIsEmpty()" classname="com.payments.gateway.validators.RefundRequestValidatorTest" time="0.0"/>
+  <testcase name="shouldNotThrowExceptionWhenRequestIsValid()" classname="com.payments.gateway.validators.RefundRequestValidatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

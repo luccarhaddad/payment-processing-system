@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.payments.gateway.validators.CancelRequestValidatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-05-03T19:01:23.425Z" hostname="Luccas-MacBook-Air.local" time="0.002">
+  <properties/>
+  <testcase name="shouldThrowExceptionWhenRequestIsNull()" classname="com.payments.gateway.validators.CancelRequestValidatorTest" time="0.001"/>
+  <testcase name="shouldThrowExceptionWhenPaymentIdIsEmpty()" classname="com.payments.gateway.validators.CancelRequestValidatorTest" time="0.0"/>
+  <testcase name="shouldNotThrowExceptionWhenRequestIsValid()" classname="com.payments.gateway.validators.CancelRequestValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

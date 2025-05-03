@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.payments.gateway.controllers.PaymentControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-05-03T19:01:23.056Z" hostname="Luccas-MacBook-Air.local" time="0.025">
+  <properties/>
+  <testcase name="shouldReturnBadRequestWhenPaymentRequestIsNull()" classname="com.payments.gateway.controllers.PaymentControllerTest" time="0.011"/>
+  <testcase name="shouldReturnOkWhenPaymentIsSuccessful()" classname="com.payments.gateway.controllers.PaymentControllerTest" time="0.013"/>
+  <system-out><![CDATA[2025-05-03T16:01:22.850-03:00  INFO 3534 --- [gateway] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.payments.gateway.controllers.PaymentControllerTest]: PaymentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-05-03T16:01:22.859-03:00  INFO 3534 --- [gateway] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.payments.gateway.GatewayApplication for test class com.payments.gateway.controllers.PaymentControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2025-05-03T16:01:22.881-03:00  INFO 3534 --- [gateway] [    Test worker] c.p.g.controllers.PaymentControllerTest  : Starting PaymentControllerTest using Java 17.0.15 with PID 3534 (started by haddad in /Users/haddad/IdeaProjects/payment-processing-system/gateway)
+2025-05-03T16:01:22.881-03:00 DEBUG 3534 --- [gateway] [    Test worker] c.p.g.controllers.PaymentControllerTest  : Running with Spring Boot v3.4.5, Spring v6.2.6
+2025-05-03T16:01:22.881-03:00  INFO 3534 --- [gateway] [    Test worker] c.p.g.controllers.PaymentControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T16:01:23.049-03:00  INFO 3534 --- [gateway] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-05-03T16:01:23.049-03:00  INFO 3534 --- [gateway] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-05-03T16:01:23.050-03:00  INFO 3534 --- [gateway] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-05-03T16:01:23.055-03:00  INFO 3534 --- [gateway] [    Test worker] c.p.g.controllers.PaymentControllerTest  : Started PaymentControllerTest in 0.192 seconds (process running for 2.762)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
