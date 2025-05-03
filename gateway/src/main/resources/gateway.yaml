@@ -140,15 +140,11 @@ components:
         customerId:
           type: string
           description: Unique identifier for the customer
-        merchantReference:
-          type: string
-          description: Unique identifier for the merchant
       required:
         - amount
         - currency
         - paymentMethod
         - customerId
-        - merchantReference
 
     PaymentResponse:
       type: object
