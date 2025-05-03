@@ -44,3 +44,8 @@ out/
 .idea/
 *.DS_Store
 .gradle
+
+### Gateway ###
+# Gateway build files
+gateway/.gradle
+gateway/build/
