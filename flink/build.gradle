@@ -1,0 +1,48 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.consumer'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.postgresql:postgresql'
+
+	// Apache Flink dependencies with specific versions
+	implementation 'org.apache.flink:flink-java:1.20.0'
+	implementation 'org.apache.flink:flink-streaming-java:1.20.0'
+	implementation 'org.apache.flink:flink-connector-kafka:3.0.0-1.17'
+	implementation 'org.apache.flink:flink-clients:1.20.0'
+
+	// Jackson for JSON processing
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+	// Logging
+	implementation 'org.slf4j:slf4j-api'
+
+	// Lombok for code generation
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

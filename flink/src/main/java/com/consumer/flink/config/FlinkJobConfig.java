@@ -1,24 +1,37 @@
 package com.consumer.flink.config;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.flink.configuration.CheckpointingOptions;
+import org.apache.flink.configuration.RestartStrategyOptions;
 import org.apache.flink.configuration.StateBackendOptions;
+import org.apache.flink.core.execution.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.Duration;
+
 @Configuration
-public class FlinkConfig {
+@RequiredArgsConstructor
+public class FlinkJobConfig {
+
+    private final FlinkJobProperties flinkJobProperties;
 
     @Bean
-    public StreamExecutionEnvironment flinkEnvironment() {
-        var configuration = new org.apache.flink.configuration.Configuration();
-        configuration.set(StateBackendOptions.STATE_BACKEND, "hashmap");
-        configuration.set(CheckpointingOptions.CHECKPOINT_STORAGE, "filesystem");
-        configuration.set(CheckpointingOptions.CHECKPOINTS_DIRECTORY, "file:///tmp/flink-checkpoints");
+    public org.apache.flink.configuration.Configuration flinkConfiguration() {
+        var config = new org.apache.flink.configuration.Configuration();
+        config.set(CheckpointingOptions.CHECKPOINTING_CONSISTENCY_MODE, CheckpointingMode.EXACTLY_ONCE);
+        config.set(CheckpointingOptions.CHECKPOINTING_INTERVAL, Duration.ofMillis(flinkJobProperties.getCheckpointInterval()));
+        config.set(StateBackendOptions.STATE_BACKEND, flinkJobProperties.getStateBackend());
+        config.set(CheckpointingOptions.CHECKPOINTS_DIRECTORY, flinkJobProperties.getCheckpointsDir());
+        config.set(RestartStrategyOptions.RESTART_STRATEGY, flinkJobProperties.getRestartStrategy());
+        config.set(RestartStrategyOptions.RESTART_STRATEGY_FIXED_DELAY_ATTEMPTS, flinkJobProperties.getRestartAttempts());
+        config.set(RestartStrategyOptions.RESTART_STRATEGY_FIXED_DELAY_DELAY, Duration.ofMillis(flinkJobProperties.getRestartDelay()));
+        return config;
+    }
 
-        var env = StreamExecutionEnvironment.getExecutionEnvironment(configuration);
-        env.enableCheckpointing(10000);
-
-        return env;
+    @Bean
+    public StreamExecutionEnvironment flinkEnvironment(org.apache.flink.configuration.Configuration flinkConfig) {
+        return StreamExecutionEnvironment.createLocalEnvironment(flinkConfig);
     }
 }

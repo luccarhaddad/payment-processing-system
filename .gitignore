@@ -49,3 +49,9 @@ out/
 # Gateway build files
 gateway/.gradle
 gateway/build/
+gateway/.idea/
+
+### Flink ###
+flink/.gradle
+flink/build/
+flink/.idea/
